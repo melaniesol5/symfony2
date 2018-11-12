@@ -15,7 +15,7 @@ class DefaultController extends Controller
     	$productos=$this->getDoctrine()
     	->getRepository('ProductoBundle:Producto')->findAll();
     	//var_dump($productos);
-        return $this->render('ProductoBundle/index.html.twig',
+        return $this->render('ProductoBundle:Default:index.html.twig',
 				[
 				'productos'=>$productos
 				]
