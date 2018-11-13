@@ -3,14 +3,14 @@
 namespace ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use ecommarg\cart\ProductInterface;
 /**
  * Producto
  *
  * @ORM\Table(name="producto")
  * @ORM\Entity(repositoryClass="ProductoBundle\Repository\ProductoRepository")
  */
-class Producto
+class Producto implements ProductInterface
 {
     /**
      * @var int
@@ -48,6 +48,15 @@ class Producto
      *
      * @return int
      */
+    public function jsonSerialize()
+    {
+        return [
+                    'id'=>$this->getId(),
+                    'name'=>$this->getName(),
+                    'price'=>$this->getPrice(),
+                    'stock'=>$this->getStock()
+        ];
+    }
     public function getId()
     {
         return $this->id;
