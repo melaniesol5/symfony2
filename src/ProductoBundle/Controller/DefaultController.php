@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/product/list", name="Product List")
+     * @Route("/product/list", name="Product_list")
      */
     public function indexAction()
     {
@@ -20,5 +20,20 @@ class DefaultController extends Controller
 				'productos'=>$productos
 				]
         	);
+    }
+    /**
+     * @Route("/product/list/tele", name="Product_list_search")
+     */
+    public function filterAction()
+    {
+     /*  $dql_query = $em->createQuery("
+    SELECT name, price, stock FROM ProductoBundle:Producto p
+    WHERE 
+      p.name LIKE '%tele%'
+      
+");
+$result = $dql_query->getResult();
+ $this->render('ProductoBundle:Default:index.html.twig', ['productos'=>$result]);
+*/return;
     }
 }

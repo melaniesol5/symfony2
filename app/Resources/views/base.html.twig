@@ -15,16 +15,24 @@
     </head>
     <body>
 	   {% block header %} 
-			<div class="top-bar">
-			<div class="top-bar-left">
-			<ul class="menu">
-			<form method="GET" action="{{path('Product List')}}">
-			<input type="search" placeholder="Search">
-			</form>
-			<li><a href="" class="button">Search</a></li>
-			</ul>
-			</div>
-			</div>
+		<div class="top-bar">
+                <div class="top-bar-left">
+                    {% block indexHeader %} {% endblock %}
+                </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <form method="GET" action="{{path('Product_list_search')}}" >
+                        <div class="input-group"> 
+                    <input type="search" name="search" placeholder="Search">
+                    <div class="input-group-button">
+                    <input type="submit" class="button" value="Search">
+                </div>
+            </div>
+
+                </form>
+                </ul>
+            </div>
+        </div>
 		{%endblock%}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
