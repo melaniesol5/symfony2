@@ -3,6 +3,7 @@
 namespace ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use ecommarg\cart\ProductInterface;
 /**
  * Producto
@@ -12,6 +13,19 @@ use ecommarg\cart\ProductInterface;
  */
 class Producto implements ProductInterface
 {
+    /**
+    *@ORM\ManyToMany(targetEntity="Category", inversedBy="Products")
+    *@ORM\JoinTable(name="Product_category")
+    */
+    private $categories=null;
+    public function __construct()
+    {
+        $this->categories=new ArrayCollection();
+    }
+    public function getCategories()
+    {
+        return $this->categories;
+    }
     /**
      * @var int
      *
