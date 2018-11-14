@@ -22,14 +22,15 @@ class ProductController extends Controller
 		//echo json_encode($product);
 		//die();
 		return $this->render('ProductoBundle:Producto:view.html.twig',
-		['producto'=>$product]
-		
+		[
+		'producto'=>$product
+		]
 		);
 	}
 	/**
-     * @Route("/product/cart/add/{id}", name="Product_add_cart")
+     * @Route("/product/cart/add/{id}/quantity/{quantity}", name="Product_add_cart")
      */
-	public function addToCartAction($id)
+	public function addToCartAction($id, $quantity)
 	{
 		$product=$this->getDoctrine()
 		->getRepository('ProductoBundle:Producto')
@@ -39,11 +40,10 @@ class ProductController extends Controller
 			
 		}
 		
-		$this->get('app.cart')->add($product);
-		
-		return $this->render('ProductoBundle:Producto:view.html.twig',
-		['producto'=>$product]);
-		
+		 $cartService = $this->get('app.cart');
+        $cartService->add($product);
+        
+		die();
 			
 	}
 	/**
@@ -52,12 +52,15 @@ class ProductController extends Controller
 	public function viewCartAction()
 	{
 		
-		$products=$this->get('app.cart')->all();
-			
-		 return $this->render('ProductoBundle:Default:index.html.twig',
-		['productos'=>$products]
+		$cartService=$this->get('app.cart');
+		$products=$cartService->getAll();
+		return $this->render('ProductoBundle:Producto:cart.html.twig',
+				[
+				'productos'=>$products
+				]
+        	);	
 		
-		);   
+	
 		
 	}
 }

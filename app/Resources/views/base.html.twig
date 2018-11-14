@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
         <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+        
         {% endblock %}
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -21,7 +22,7 @@
                 </div>
             <div class="top-bar-right">
                 <ul class="menu">
-                    <form method="GET" action="{{path('Product_list_search')}}" >
+                    <form method="GET" action="#" >
                         <div class="input-group"> 
                     <input type="search" name="search" placeholder="Search">
                     <div class="input-group-button">
@@ -32,20 +33,8 @@
                 </form>
                 </ul>
             </div>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-
-
-        </div>
-        <a class="button" href="{{path('Product_view_cart')}}" class="shopping-cart-button float-right" data-toggle="shopping-cart-dropdown">
-  <i class="fa fa-shopping-cart"></i>
-  <span class="text">Shopping Cart</span>
-</a>
-<div class="shopping-cart-dropdown-pane">
-  <div class="dropdown-pane bottom " id="shopping-cart-dropdown" data-dropdown data-hover="true" data-hover-pane="true">
-    {% block cartitem %}
-    
-    {% endblock %}
-    <a href="#" class="button shopping-cart-checkout expanded">Checkout</a>
+            
+       
 
   </div>
 </div>

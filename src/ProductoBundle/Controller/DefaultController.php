@@ -21,19 +21,5 @@ class DefaultController extends Controller
 				]
         	);
     }
-    /**
-     * @Route("/product/list/tele", name="Product_list_search")
-     */
-    public function filterAction()
-    {
-     /*  $dql_query = $em->createQuery("
-    SELECT name, price, stock FROM ProductoBundle:Producto p
-    WHERE 
-      p.name LIKE '%tele%'
-      
-");
-$result = $dql_query->getResult();
- $this->render('ProductoBundle:Default:index.html.twig', ['productos'=>$result]);
-*/return;
-    }
+   
 }
