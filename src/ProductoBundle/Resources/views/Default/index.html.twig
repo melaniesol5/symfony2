@@ -9,7 +9,22 @@
 
     
 {% endblock %}
-
+{% block cartitem %}
+	
+	<div class="shopping-cart-item">
+      <img src="https://placeimg.com/60/80/any">
+      <div class="shopping-cart-item-name">
+        <a>Name</a>
+        <p><span class="shopping-cart-title">Color: </span>Blue</p>
+        <p><span class="shopping-cart-title">Size: </span>M</p>
+      </div>
+      <div class="shopping-cart-item-price">
+        <p class="shopping-cart-title">Price</p>
+        <a href="#">Remove</a>
+      </div>
+    </div>
+    
+{% endblock %}
 {% block body %}
 	<h1> Productos </h1>
 	<article class="grid-container">

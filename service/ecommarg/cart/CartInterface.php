@@ -6,4 +6,5 @@
 	{
 		public function add(Product $producto);
 		public function get($id);
+		public function all();
 	}

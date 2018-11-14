@@ -11,12 +11,16 @@
 		{
 			$this->adapter=$adapter;
 		}
-		public function add(Product $product)
+		public function add(Product $producto)
 		{
-			$this->adapter->set($product->getId(), json_encode($product));
+			$this->adapter->set($producto->getId(), json_encode($producto));
 		}
 		public function get($id)
 		{
-			$this->get($id);
+			$this->adapter->get($id);
+		}
+		public function all()
+		{
+			$this->adapter->all();
 		}
 	}
