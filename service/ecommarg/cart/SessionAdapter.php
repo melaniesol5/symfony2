@@ -38,8 +38,5 @@
 			}
 			return $all;
 		}
-		public function replace($array)
-		{
-			return $this->session->replace($array);
-		}
+	
 	}
