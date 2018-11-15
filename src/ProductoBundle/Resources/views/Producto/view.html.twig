@@ -28,14 +28,20 @@
 				<p>Stock:{{producto.stock}}</p>
 
 		<div class="grid-x">
+
 		<div class="small-3 cell">
 		<label for="middle-label" class="middle">Quantity</label>
 		</div>
+		   <form id="addToCart" action="{{path('Product_add_cart')}}" method="POST">
+
 		<div class="small-9 cell">
-		<input type="text" id="middle-label" placeholder="One fish two fish">
+		<input type="text" name="quantity" id="middle-label" placeholder="One fish two fish">
 		</div>
 		</div>
-		<a href="#" class="button large expanded">Buy Now</a>
+		
+		<input type="hidden" name="id" value="{{producto.id}}" method="POST">
+		<button type="submit" class="button large expanded"  id="addToCart" > Agregar al carrito </button>
+		</form>
 		<div class="small secondary expanded button-group">
 		<a class="button">Facebook</a>
 		<a class="button">Twitter</a>
@@ -43,8 +49,6 @@
 		</div>
 		</div>
 		</div>
-
-
 
 </article>
 {% endblock %}

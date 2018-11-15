@@ -15,7 +15,7 @@ services:
         arguments: [e:]
     app.cart:
         class: ecommarg\cart\Cart
-        arguments: ['@cart.adapter.file']
+        arguments: ['@cart.adapter.session']
         
     
     #app.cart:

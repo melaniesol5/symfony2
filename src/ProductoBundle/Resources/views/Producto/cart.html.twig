@@ -62,15 +62,16 @@
     <h5>2 Items</h5>
   </div>
   
-   {% for producto in productos %}
+   {% for item in cart %}
       <div class="checkout-summary-item">
       <img src="https://placeimg.com/100/80/any">
       <div class="item-name">
-        <a>{{producto.name}}</a>
+        <a>{{item.product.name}}</a>
         
       </div>
+      
       <div class="item-price">
-        <p class="title">{{producto.price}}</p>
+        <p class="title">{{item.product.price}}</p>
         <a href="#">Remove</a>
       </div>
     

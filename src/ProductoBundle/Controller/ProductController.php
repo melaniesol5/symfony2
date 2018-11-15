@@ -4,7 +4,7 @@ namespace ProductoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+use Symfony\Component\HttpFoundation\Request;
 class ProductController extends Controller
 {
 	/**
@@ -28,24 +28,21 @@ class ProductController extends Controller
 		);
 	}
 	/**
-     * @Route("/product/cart/add/{id}/quantity/{quantity}", name="Product_add_cart")
+     * @Route("/add", name="Product_add_cart" )
      */
-	public function addToCartAction($id, $quantity)
+	public function addToCartAction(Request $r)
 	{
-		$product=$this->getDoctrine()
-		->getRepository('ProductoBundle:Producto')
-		->find($id);
-		if (null===$product) {
-			throw new \Exception("Product not found");
-			
-		}
-		
-		 $cartService = $this->get('app.cart');
-        $cartService->add($product);
-        
-		die();
-			
-	}
+		 $id=$r->get('id');
+        $quantity=$r->get('quantity');
+        $producto= $this->getDoctrine()
+        ->getRepository('ProductoBundle:Producto')
+        ->find($id);
+        if(null===$producto){
+            throw new \Exception("Product not found");
+        }
+        $cartService = $this->get('app.cart');
+        $cartService->add($producto);        
+    }
 	/**
      * @Route("/product/cart/view", name="Product_view_cart")
      */
@@ -53,10 +50,11 @@ class ProductController extends Controller
 	{
 		
 		$cartService=$this->get('app.cart');
-		$products=$cartService->getAll();
+		$items=$cartService->getAll();
+		
 		return $this->render('ProductoBundle:Producto:cart.html.twig',
 				[
-				'productos'=>$products
+				'cart'=>$items
 				]
         	);	
 		

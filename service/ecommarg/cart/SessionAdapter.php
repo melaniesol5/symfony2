@@ -31,12 +31,8 @@
 		}
 		public function getAll()
 		{
-			$all=$this->session
+			return $this->session
 			->getBag($this->bagName)->all();
-			foreach($all as &$item){ // el & dice modifica el $item y no genera una copia, consume menos memoria
-				$item=json_decode($item);
-			}
-			return $all;
 		}
 	
 	}

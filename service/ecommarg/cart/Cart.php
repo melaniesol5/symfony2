@@ -8,11 +8,19 @@
 		public function __construct (SaveAdapter $adapter){
 			$this->adapter=$adapter;
 		}
-		public function add(Product $producto)
+		public function add(Product $product, $quantity=1)
 		{
+			$quantity=(int)$quantity;
+			if($quantity<=0){
+				throw new \Exception("cantidad invalida");
+			}
+
 			$this->adapter->set(
-				$producto->getId(),
-				json_encode($producto)
+				$product->getId(),
+				json_encode([
+								'quantity'=>$quantity,
+								'product'=>$product
+								])
 			);
 
 		}
@@ -20,7 +28,12 @@
 			return $this->adapter->get($id);
 		}
 		public function getAll(){
-			return $this->adapter->getAll();
+			
+			$data= $this->adapter->getAll();
+			foreach($data as &$item){ // el &  modifica el $item y no genera una copia, consume menos memoria
+				$item=json_decode($item);
+			}
+			return $data;
 		}
 		
 	}
