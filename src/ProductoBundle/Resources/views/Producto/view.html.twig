@@ -51,4 +51,13 @@
 		</div>
 
 </article>
+<script>
+  $(document).ready(function(){
+
+    $('#addToCart').on('submit', function(e){
+      e.preventDefault();
+      alert('enviar peticion XHR al carrito');
+    });
+  });
+  </script>
 {% endblock %}
