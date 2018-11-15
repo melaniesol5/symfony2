@@ -52,6 +52,7 @@
 
 </article>
 <script>
+{%if 'ajax' == cart_config.buy_mode %}
     $(document).ready(function(){
         $('#addToCart').on('submit',function(e){
             e.preventDefault();
@@ -62,5 +63,7 @@
             });
         });
     });
+{%endif%}
   </script>
+}
 {% endblock %}
