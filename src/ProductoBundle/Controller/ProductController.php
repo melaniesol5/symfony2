@@ -41,7 +41,8 @@ class ProductController extends Controller
             throw new \Exception("Product not found");
         }
         $cartService = $this->get('app.cart');
-        $cartService->add($producto);        
+        $cartService->add($producto); 
+            
     }
 	/**
      * @Route("/product/cart/view", name="Product_view_cart")
@@ -51,7 +52,7 @@ class ProductController extends Controller
 		
 		$cartService=$this->get('app.cart');
 		$items=$cartService->getAll();
-		
+
 		return $this->render('ProductoBundle:Producto:cart.html.twig',
 				[
 				'cart'=>$items

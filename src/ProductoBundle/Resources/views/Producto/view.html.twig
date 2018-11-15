@@ -40,7 +40,7 @@
 		</div>
 		
 		<input type="hidden" name="id" value="{{producto.id}}" method="POST">
-		<button type="submit" class="button large expanded"  id="addToCart" > Agregar al carrito </button>
+		<button type="submit" class="button large expanded"> Agregar al carrito </button>
 		</form>
 		<div class="small secondary expanded button-group">
 		<a class="button">Facebook</a>
@@ -52,12 +52,15 @@
 
 </article>
 <script>
-  $(document).ready(function(){
-
-    $('#addToCart').on('submit', function(e){
-      e.preventDefault();
-      alert('enviar peticion XHR al carrito');
+    $(document).ready(function(){
+        $('#addToCart').on('submit',function(e){
+            e.preventDefault();
+           
+            $.post('{{ path('Product_add_cart')}}',$(this).serialize())
+            .done(function(data){
+                alert('Se agrego el producto al carrito');
+            });
+        });
     });
-  });
   </script>
 {% endblock %}
