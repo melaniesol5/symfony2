@@ -147,5 +147,9 @@ class Producto implements ProductInterface
     {
         return $this->stock;
     }
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
 
