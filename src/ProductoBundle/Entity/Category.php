@@ -3,6 +3,7 @@
 namespace ProductoBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="ProductoBundle\Repository\CategoryRepository")
  */
-class Category
+class Category implements \JsonSerializable
 {
     /**
     *@ORM\ManyToMany(targetEntity="Producto", mappedBy="categories")
@@ -78,6 +79,14 @@ class Category
      public function __toString()
     {
         return $this->name;
+    }
+    public function jsonSerialize()
+    {
+        return [
+                    'id'=>$this->getId(),
+                    'name'=>$this->getName()
+                    
+        ];
     }
 }
 
