@@ -62,8 +62,8 @@ class ProductController extends Controller
         }
 
         return $this->redirect(
-			$this->generateUrl('Product_view_cart')
-		);
+								$this->generateUrl('Product_view_cart')
+		    					);
 
 
     }
